@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
-// Route::get('/posts', [PostController::class, 'blog']) -> name('posts.blog');
-// Route::get('/posts/create', [PostController::class, 'create']) -> name('posts.create');
-// Route::get('/posts/view', [PostController::class, 'view']) -> name('posts.view');
+Route::get('/', function() {
+    return view('layouts.app');
+});
 
 Route::resource('posts', PostController::class); 
+Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');

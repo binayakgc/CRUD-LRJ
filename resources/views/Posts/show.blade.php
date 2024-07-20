@@ -8,7 +8,11 @@
         <li>Title: {{$post->title}}</li>    
         <li>Content: {{$post->content}}</li>
     </ul>
-    <a href= "">edit </a>
-    <a href=""> delete</a>
+    <a href= "{{ route('posts.edit', $post->id) }}">edit </a>
+    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
 @endsection
  
