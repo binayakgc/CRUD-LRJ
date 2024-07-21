@@ -102,3 +102,8 @@ Show
 
 ## Factory And Seeder
 Used this to enter dummy data in the database.
+
+## Reference
+-From Une lecture video 
+-website
+    https://medium.com/@ebenezeroyeku/building-your-first-app-with-laravel-a-simple-crud-application-785a25772a48
