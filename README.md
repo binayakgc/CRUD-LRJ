@@ -1,68 +1,104 @@
-# myblog
+# blog
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+CURD application with create, update, edit and delete features.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## SetUp And Initialization of project
+Install and set up Visual Studio Code.
+Install Node.js
+Install Git and create a GitHub account.
+Install Composer
+Install MongoDB
+Install Laragon
+Install Mysql
 
-## About Laravel
+## Laravel Setup
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Open Laragon
+Setup new version of PHP and Apache.
+And also check the sql of laragon
+After that Went to Menu then Quick App 
+To Setup my laravel Application
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## GitHub
+create a new github repository CRUD-LRJ
+After installation and setup, I went to blog folder and started Gitbash
+Start using the command
+Git init
+Git add .
+Git remote add origin https://github.com/binayakgc/CRUD-LRJ.git
+Git commit -m “message”
+Git push
+Git pull
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Layout and Posts
+After that  I started create the layouts and  posts for my CRUD
+- Layout
+    has the main html layout which use
+    <div class="container">
+        @yield('content')
+    </div>
+    To get content from other file from folder Posts
+- Posts
+    On this part i have extended layout.app which contains section for every page
+    that we go.
+    @extends('layouts.app')
 
-## Learning Laravel
+    @section('content')
+    ...
+    @endsection
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Routes
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+web.php is used as the Routes for this file
+And on the page resource is used which sets up multiple routes to handle various actions
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Route::get('/', function() {
+    return redirect('/posts');
+});
+when a user visits the root URL, they are redirected to /posts.
 
-## Laravel Sponsors
+Route::resource('posts', PostController::class); 
+Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy'); 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+## Create Database and config Laravel
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+For database i went to .Env file and fix 
+DB_CONNECTION=mysql
+DB_DATABASE=blog
 
-## Contributing
+## Controller
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+ used Post controller to Setup My Crud system
+As it has all the functionalities for CRUD
 
-## Code of Conduct
+## Model and Migration
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+ran the program in the terminal
+ php artisan make:model Post -m
 
-## Security Vulnerabilities
+updated the migration file
+ public function up(): void
+    {
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->timestamps();
+        });
+    }
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Again Run this on terminal
+ php artisan migrate
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Action
+In the post folder ther are 4 files
+Create 
+Index
+Edit 
+Show
+
+
+## Factory And Seeder
+Used this to enter dummy data in the database.

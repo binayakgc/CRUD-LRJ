@@ -5,6 +5,7 @@
     <hr>
     <a href="{{ url()->previous() }}" class="btn btn-primary"> Back </a>
     <br>
+    <br>
     <form action = "{{route('posts.store')}}" method = "post">
         @csrf
         <div class = "form-group">
