@@ -19,58 +19,44 @@ class PostController extends Controller
         return view('admin.posts.create');
     }
 
+    public function show(Post $post) 
+    {
+        
+        return view('admin.posts.show', compact('post'));
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'author' => 'required|string|max:255',
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
         ]);
 
-        Post::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'author' => $request->author,
-        ]);
+        $post = Post::create($validatedData);
 
         return redirect()->route('admin.posts.index')->with('success', 'Post created successfully');
     }
 
-    public function show($id)
+    public function edit(Post $post)
     {
-        $post = Post::find($id);
-        return view('admin.posts.show', compact('post'));
-    }
-
-    public function edit($id)
-    {
-        $post = Post::find($id);
         return view('admin.posts.edit', compact('post'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'author' => 'required|string|max:255',
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
         ]);
 
-        $post = Post::find($id);
-        $post->update([
-            'title' => $request->title,
-            'content' => $request->content,
-            'author' => $request->author,
-        ]);
+        $post->update($validatedData);
 
         return redirect()->route('admin.posts.index')->with('success', 'Post updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::find($id);
         $post->delete();
-
         return redirect()->route('admin.posts.index')->with('success', 'Post deleted successfully');
     }
 }
