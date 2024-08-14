@@ -18,7 +18,11 @@ class DatabaseSeeder extends Seeder
         User::factory(10)
         ->has(Post::factory(10))
         ->create(); 
-        
+        $this->call([
+            RoleSeeder::class,
+            UserSeeder::class,
+            // Add any other seeders here
+        ]);
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

@@ -13,6 +13,9 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $connection = 'mongodb';
+    protected $collection = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -51,6 +54,11 @@ class User extends Authenticatable
     public function posts() {
         return $this->hasMany(Post::class,'user_id');
     }
+    
+    // public function role()
+    // {
+    //     return $this->belongsTo(Role::class);
+    // }
 
     public function isAdmin()
     {

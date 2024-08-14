@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <h1> Blog post Details </h1>
     <hr>
-    <a href="{{ route('posts.index') }}" class="btn btn-primary"> Back </a>
+    <a href="{{ route('admin.posts.index') }}" class="btn btn-primary"> Back </a>
     {{-- <ul>
         <li>ID: {{$post->id}}</li>
         <li>Title: {{$post->title}}</li>    
@@ -27,12 +28,13 @@
             </div>
         </div>
     </div>
-    <a href= "{{ route('posts.edit', $post->id) }}" class="btn btn-primary">edit </a>
+    <a href= "{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">edit </a>
     <hr>
-    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-primary">Delete</button>
     </form>
+</div>
 @endsection
  
