@@ -72,9 +72,14 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container-fluid">
+            <div class="row">
+                @include('layouts.includes.navbar')
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
     </div>
 </body>
 </html>
