@@ -30,6 +30,7 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->role }}</td>
                 <td>
+                    <a href="{{ route('admin.users.show', $user) }}" class="btn btn-sm btn-outline-info">View</a>
                     <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
                     <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="d-inline">
                         @csrf
@@ -43,4 +44,6 @@
     </table>
 </div>
 @endsection
- 
+
+
+

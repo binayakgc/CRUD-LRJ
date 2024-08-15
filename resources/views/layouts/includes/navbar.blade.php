@@ -10,13 +10,19 @@
           <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{{ route('admin.posts.index') }}">
               <svg class="bi"><use xlink:href="#house-fill"/></svg>
-              Post
+              Admin Post
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.users.index') }}>
+            <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.users.index') }}">
               <svg class="bi"><use xlink:href="#people"/></svg>
               User
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{{ route('admin.posts.index') }}">
+              <svg class="bi"><use xlink:href="#house-fill"/></svg>
+              Post
             </a>
           </li>
         </ul>
@@ -24,12 +30,6 @@
         <hr class="my-3">
 
         <ul class="nav flex-column mb-auto">
-          {{-- <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="#">
-              <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
-              Settings
-            </a>
-          </li> --}}
           <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
