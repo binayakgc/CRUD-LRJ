@@ -9,7 +9,7 @@
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2 {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
-                    <svg class="bi"><use xlink:href="#house-door"/></svg>
+                    <svg class="bi"><use xlink:href="#house-fill"/></svg>
                     Home
                 </a>
               </li>

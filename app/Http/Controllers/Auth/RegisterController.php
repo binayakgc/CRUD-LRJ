@@ -52,7 +52,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required', 'string', 'in:admin,author,user'],
+            'role' => ['sometimes', 'string', 'in:admin,author,user'],
+        ], [
+            'password.regex' => 'The password must contain at least one uppercase letter, one lowercase letter, one number and one special character.',
         ]);
     }
 
@@ -68,7 +70,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role'],
+            'role' => $data['role'] ?? 'user',
         ]);
     }
 }

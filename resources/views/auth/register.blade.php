@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" id="registration-form">
                         @csrf
 
                         <div class="row mb-3">
@@ -50,6 +50,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <small class="form-text text-muted">Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character.</small>
                             </div>
                         </div>
 
@@ -63,6 +64,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
+                                <input type="hidden" name="role" value="user">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
@@ -74,4 +76,27 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registration-form');
+    const password = document.getElementById('password');
+    const passwordConfirm = document.getElementById('password-confirm');
+
+    form.addEventListener('submit', function(event) {
+        if (password.value !== passwordConfirm.value) {
+            event.preventDefault();
+            alert('Passwords do not match');
+        }
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!passwordRegex.test(password.value)) {
+            event.preventDefault();
+            alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character.');
+        }
+    });
+});
+</script>
 @endsection
