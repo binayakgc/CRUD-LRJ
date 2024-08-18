@@ -40,12 +40,12 @@
                         </a>
                     </li>
                 @else
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2 {{ request()->routeIs('posts.index') ? 'active' : '' }}" href="{{ route('posts.index') }}">
                             <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
                             View Posts
                         </a>
-                    </li>
+                    </li> --}}
                 @endif
             </ul>
 

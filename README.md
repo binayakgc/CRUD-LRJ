@@ -6,7 +6,7 @@ A CRUD application with create, read, update, and delete features built with Lar
 
 - User authentication (register, login, logout)
 - Role-based access control (admin, author, user)
-- Blog post management (create, read, update, delete) [accessed by user if needed]
+- Blog post management (create, read, update, delete) [accessed by user if needed (assignment 1)]
 - Responsive design with Bootstrap
 - Dark mode support
 
@@ -46,7 +46,7 @@ A CRUD application with create, read, update, and delete features built with Lar
    
    git init
    git add .
-   git remote add origin https://github.com/binayakgc/CRUD-LRJ.git
+   git remote add origin https://github.com/binayakgc/CRUD-LRJ.git (branch : feature/auth-admin-panel)
    git commit -m "Initial commit"
    git push -u origin main
    
@@ -55,7 +55,7 @@ A CRUD application with create, read, update, and delete features built with Lar
 
 1. Clone the repository:
    
-   git clone https://github.com/binayakgc/CRUD-LRJ.git
+   git clone https://github.com/binayakgc/CRUD-LRJ.git (branch : feature/auth-admin-panel)
    
 
 2. Navigate to the project directory:
